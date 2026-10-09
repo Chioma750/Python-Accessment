@@ -6,7 +6,13 @@ resources = [
 fellows = {"F001": "Ada", "F002": "John", "F003": "Grace"}
 borrow_records = []
 
-def Borrow_Resource():
+def add_Resource():
+    unique_id = input("What is your unique ID")
+    resource_name = input("What is your resource name")
+    category = input("What category did you need")
+    total_unit = input("What is the total unit") 
+
+def borrow_Resource():
     input_1 = input("What is your Fellow ID: ")
     input_2 = input("What is your Resource ID: ")
     input_3 = input("What is the Quantity: ")
@@ -40,7 +46,7 @@ def Borrow_Resource():
         print("Error: Quantity must be a valid integer.")
         return
 
-def Return_Resource():
+def return_Resource():
     input_1 = input("What is your Fellow ID: ")
     input_2 = input("What is your Resource ID: ")
     input_3 = input("Enter the Quantity to Return: ")
@@ -75,16 +81,24 @@ def Return_Resource():
             return
 
         selected_resource["available"] += qyt_to_return
+
+        for record in borrow_records:
+            if record["fellow_id"] == input_1 and record["resource_id"] == input_2:
+                record["quantity"] -= qyt_to_return
+                if record["quantity"] == 0:
+                    borrow_records.remove(record)
+                    break
+
         print("Success: Resource returned successfully!")
 
     except ValueError:
         print("Error: Quantity must be a valid integer.")
         return
 
-def Add_Resource(): pass
-def List_Resource(): pass
-def Search_Resource(): pass
-def Report_Resource(): pass
+def add_Resource(): pass
+def list_Resource(): pass
+def search_Resource(): pass
+def report_Resource(): pass
 
 def main():
     while True:
@@ -99,17 +113,17 @@ def main():
         choice = input("Choose a resource from the listed above: ")
 
         if choice == "1":
-            Add_Resource()
+            add_Resource()
         elif choice == "2":
-            List_Resource()
+            list_Resource()
         elif choice == "3":
-            Borrow_Resource()
+            borrow_Resource()
         elif choice == "4":
-            Return_Resource()
+            return_Resource()
         elif choice == "5":
-            Search_Resource()
+            search_Resource()
         elif choice == "6":
-            Report_Resource()
+            report_Resource()
         elif choice == "7":
             print("Exitting...")
             return
