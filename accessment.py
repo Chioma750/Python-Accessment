@@ -13,16 +13,35 @@ def add_Resource():
     total_unit = input("What is the total unit")
 
     for res in resources:
-        if unique_id == resources:
+        if unique_id == res["id"]:
             print("Error: Resource ID already exists!")
             return
 
     try:
-        category = int(input("What category did you need"))
-        if total_unit > 0:
-            record = {"id": unique_id, "name": resource_name, "category": category}
-            total_unit = 0
-            available = 0
+        total_unit_int = int(total_unit)
+        if total_unit_int <= 0:
+            print("Error: Total units must be positive.")
+            return
+
+        new_resource = {
+            "id": unique_id,
+            "name": resource_id,
+            "category": category,
+            "total": total_unit_int,
+            "available": total_unit_int
+        }
+
+        resources.append(new_resource)
+        print("Success: Resource added successfully!")
+
+    except ValueError:
+        print("Error: Total uniits must be a valid integer.")
+        return
+
+def list_Resource():
+    if resources == "":
+        print("No resources is currently regitered.")
+        return 
 
 def borrow_Resource():
     input_1 = input("What is your Fellow ID: ")
