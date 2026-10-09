@@ -10,7 +10,19 @@ def add_Resource():
     unique_id = input("What is your unique ID")
     resource_name = input("What is your resource name")
     category = input("What category did you need")
-    total_unit = input("What is the total unit") 
+    total_unit = input("What is the total unit")
+
+    for res in resources:
+        if unique_id == resources:
+            print("Error: Resource ID already exists!")
+            return
+
+    try:
+        category = int(input("What category did you need"))
+        if total_unit > 0:
+            record = {"id": unique_id, "name": resource_name, "category": category}
+            total_unit = 0
+            available = 0
 
 def borrow_Resource():
     input_1 = input("What is your Fellow ID: ")
