@@ -7,10 +7,10 @@ fellows = {"F001": "Ada", "F002": "John", "F003": "Grace"}
 borrow_records = []
 
 def add_Resource():
-    unique_id = input("What is your unique ID")
-    resource_name = input("What is your resource name")
-    category = input("What category did you need")
-    total_unit = input("What is the total unit")
+    unique_id = input("What is your unique ID: ")
+    resource_name = input("What is your resource name: ")
+    category = input("What category did you need: ")
+    total_unit = input("What is the total unit: ")
 
     for res in resources:
         if unique_id == res["id"]:
@@ -18,17 +18,17 @@ def add_Resource():
             return
 
     try:
-        total_unit_int = int(total_unit)
-        if total_unit_int <= 0:
+        qyt = int(total_unit)
+        if qyt <= 0:
             print("Error: Total units must be positive.")
             return
 
         new_resource = {
             "id": unique_id,
-            "name": resource_id,
+            "name": resource_name,
             "category": category,
-            "total": total_unit_int,
-            "available": total_unit_int
+            "total": qyt,
+            "available": qyt
         }
 
         resources.append(new_resource)
@@ -39,9 +39,12 @@ def add_Resource():
         return
 
 def list_Resource():
-    if resources == "":
+    if len(resources) == 0:
         print("No resources is currently regitered.")
         return 
+
+    for res in resources:
+        print()
 
 def borrow_Resource():
     input_1 = input("What is your Fellow ID: ")
@@ -126,8 +129,6 @@ def return_Resource():
         print("Error: Quantity must be a valid integer.")
         return
 
-def add_Resource(): pass
-def list_Resource(): pass
 def search_Resource(): pass
 def report_Resource(): pass
 
