@@ -44,7 +44,7 @@ def list_Resource():
         return 
 
     for res in resources:
-        print()
+        print(f"ID: {res['id']} | Name: {res['name']} | Category: {res['category']} | Total: {res['total']} | Available: {res['available']}")
 
 def borrow_Resource():
     input_1 = input("What is your Fellow ID: ")
@@ -129,7 +129,10 @@ def return_Resource():
         print("Error: Quantity must be a valid integer.")
         return
 
-def search_Resource(): pass
+def search_Resource():
+    query = input("What item name or category do you want to search for: ")
+    query.lower(input("What item name or category do you want to search for: "))
+    
 def report_Resource(): pass
 
 def main():
