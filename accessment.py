@@ -131,8 +131,16 @@ def return_Resource():
 
 def search_Resource():
     query = input("What item name or category do you want to search for: ")
-    query.lower(input("What item name or category do you want to search for: "))
-    
+    search_term = query.lower()
+    found = False
+
+    for res in resources:
+        if search_term in res["name"].lower() or search_term in res["category"].lower():
+            print(f"ID: {res['id']} | Name: {res['name']} | Category: {res['category']} | Total: {res['total']} | Available: {res['available']}")
+            found = True
+
+        if not found: 
+            print("No matching resources found.")
 def report_Resource(): pass
 
 def main():
