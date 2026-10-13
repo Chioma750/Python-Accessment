@@ -33,6 +33,7 @@ def add_Resource():
 
         resources.append(new_resource)
         print("Success: Resource added successfully!")
+        print()
 
     except ValueError:
         print("Error: Total uniits must be a valid integer.")
@@ -124,10 +125,12 @@ def return_Resource():
                     break
 
         print("Success: Resource returned successfully!")
+        print()
 
     except ValueError:
         print("Error: Quantity must be a valid integer.")
         return
+        print()
 
 def search_Resource():
     query = input("What item name or category do you want to search for: ")
@@ -139,9 +142,22 @@ def search_Resource():
             print(f"ID: {res['id']} | Name: {res['name']} | Category: {res['category']} | Total: {res['total']} | Available: {res['available']}")
             found = True
 
-        if not found: 
-            print("No matching resources found.")
-def report_Resource(): pass
+    if not found: 
+        print("No matching resources found.")
+        print()
+
+def report_Resource():
+    total_unit = 0
+    available_unit = 0
+    low_stock = [] 
+    borrowed_unit = None
+
+    for res in resources:
+        total = total + total_unit
+        available = available + total_unit
+
+        if available < 3:
+            print("Tis is a low stock")
 
 def main():
     while True:
