@@ -151,13 +151,20 @@ def report_Resource():
     available_unit = 0
     low_stock = [] 
     borrowed_unit = None
+    max_borrowed = 0
 
     for res in resources:
-        total = total + total_unit
-        available = available + total_unit
+        total_unit += res["total"]
+        available_unit = res["available"]
 
         if available < 3:
-            print("Tis is a low stock")
+            print("This is a low stock")
+    
+    total_borrowed_unit = res["total"] - res["available"] 
+    
+    print(f"Total Units Owned: {total_unit}") 
+    print(f"Total Available Unit: {available_unit}") 
+    print(f"Total Borrowed Unit: {total_borrowed_unit}")
 
 def main():
     while True:
